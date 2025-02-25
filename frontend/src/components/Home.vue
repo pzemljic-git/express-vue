@@ -3,6 +3,7 @@
   const country = ref('');
   const capital = ref('');
 
+  // Exercice: move this client side code into a server side REST API
   watch(country, (newValue, oldValue) => {
     switch(newValue) {
       case 'Austria':
