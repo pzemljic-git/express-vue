@@ -2,25 +2,17 @@
   import { ref, watch } from 'vue';
   const country = ref('');
   const capital = ref('');
+  const countryToCapital = {
+      Austria: 'Vienna',
+      Canada: 'Ottawa',
+      Mexico: 'Mexico City',
+      USA: 'Washington D.C.'
+  };
+  const countries = Object.keys(countryToCapital);
 
   // Exercice: move this client side code into a server side REST API
   watch(country, (newValue, oldValue) => {
-    switch(newValue) {
-      case 'Austria':
-        capital.value = 'Vienna';
-        break;
-      case 'Canada':
-        capital.value = 'Ottawa';
-        break;
-      case 'Mexico':
-        capital.value = 'Mexico City';
-        break;
-      case 'USA':
-        capital.value = 'Washington D.C.';
-        break;
-      default:
-        capital.value = '';
-    }
+    capital.value = countryToCapital[newValue];
   });
 </script>
 
@@ -32,10 +24,7 @@
         <td>
           <select v-model="country">
             <option disabled value="">Please select one</option>
-            <option>Austria</option>
-            <option>Canada</option>
-            <option>Mexico</option>
-            <option>USA</option>
+            <option v-for = "country in countries">{{ country }}</option>
           </select>
         </td>  
       </tr>
