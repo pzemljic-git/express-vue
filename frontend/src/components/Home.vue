@@ -2,7 +2,7 @@
   import { ref, watch } from 'vue';
   const country = ref('');
   const capital = ref('');
-  const countryToCapital = {
+  const countryToCapital: { [key: string]: string } = {
       Austria: 'Vienna',
       Canada: 'Ottawa',
       Mexico: 'Mexico City',
